@@ -13,8 +13,8 @@ class Scraper:
         try:
             for item in reviews:
                 review = {
-                    'product_name': soup.title.text.replace('Amazon.co.uk:Customer reviews:', '').strip(),
-                    'rating_title': item.find('a', {'data-hook': 'review-title'}).text.strip(),
+                    'product_name': soup.title.text.strip(),
+                    'rating_title': item.find('a', {'data-hook': 'review-title'}).contents[3].text.strip(),
                     'rating_value':  float(item.find('i', {'data-hook': 'review-star-rating'}).text.replace('out of 5 stars', '').strip()),
                     'body': item.find('span', {'data-hook': 'review-body'}).text.strip(),
                 }
