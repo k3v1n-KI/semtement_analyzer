@@ -2,10 +2,13 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 import csv
+from sentiment_analyzer import SentimentAnalyzer
 
 reviewlist = []
 
 class Scraper:
+    def __init__(self):
+        self.model = SentimentAnalyzer()
     def get_reviews(self, url):
         resp = requests.get(url)
         soup = BeautifulSoup(resp.text, 'html.parser')
@@ -18,6 +21,9 @@ class Scraper:
                     'rating_value':  float(item.find('i', {'data-hook': 'review-star-rating'}).text.replace('out of 5 stars', '').strip()),
                     'body': item.find('span', {'data-hook': 'review-body'}).text.strip(),
                 }
+                # Model predicts and prediction is stored in the review dictionary
+                prediction = self.model.predict_sentiment(review['body'])
+                review['prediction'] = prediction
                 reviewlist.append(review)
 
             # for item in reviewlist:

@@ -31,12 +31,24 @@
                 {% for review in result %}
                     <div class="row mb-2">
                         <div class="col">
+                            {% if review.prediction.sentiment == "Positive" %}
                             <div class="card alert alert-success">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ review.rating_title }}</h5>
                                     <p class="card-text">{{ review.rating_value }}</p>
+                                    <p class="card-text">Prediction: {{ review.prediction.sentiment }}</p>
                                 </div>
                             </div>
+                            {% else %}
+                            <div class="card alert alert-danger">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ review.rating_title }}</h5>
+                                    <p class="card-text">{{ review.rating_value }}</p>
+                                    <p class="card-text">Prediction: {{ review.prediction.sentiment }}</p>
+                                </div>
+                            </div>
+                            {% endif %}
+                            
                         </div>
                     </div>
                 {% endfor %}
