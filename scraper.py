@@ -154,11 +154,4 @@ class AmazonReviewScraper:
         return df_reviews
         
 
-web_scraper = AmazonReviewScraper()
-
-url = "https://www.amazon.ca/dp/B0CWCWL81G"
-
-df_reviews = web_scraper.get_reviews(url)
-
-print(df_reviews)
 
