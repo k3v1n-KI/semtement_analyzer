@@ -1,7 +1,3 @@
-Here’s a **README.md** file summarizing your project:
-
----
-
 # **Sentiment Analysis of Product Reviews**
 
 This repository contains the implementation of a sentiment analysis system designed to classify e-commerce product reviews as positive or negative. The project combines machine learning, transfer learning, and web development techniques to provide an end-to-end solution for real-time sentiment analysis.
